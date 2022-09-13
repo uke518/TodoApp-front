@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Todo, mockTodoList } from "../types/Todo"
+import { Todo } from "../types/Todo"
 import "react-native-get-random-values";
+import {mockTodoList} from "../constants/dummy"
 //import { v4 as uuidv4 } from "uuid";
 
 

@@ -1,15 +1,18 @@
 //import { TodoTitle } from "./TodoTitle";
 import { TodoItem } from "./TodoItem";
 import { Todo } from "../types/Todo";
+import { FC } from 'react'
+
+type Props={
+    todoList: Todo[]
+    deleteTodoListItem: (id: string) => void;
+}
 
 // TodoItemをループして表示
 // todoListが0件の場合、タイトルとTODOリストを表示しない
-export const TodoList = ({
+export const TodoList:FC<Props> = ({
     todoList,
     deleteTodoListItem,
-}: {
-    todoList: Todo[];
-    deleteTodoListItem: (id: string) => void;
 }) => {
     return (
         <>
