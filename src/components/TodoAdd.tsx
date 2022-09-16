@@ -1,8 +1,14 @@
+import { FC } from 'react'
 
-export const TodoAdd = ({ buttonText, handleAddTodoListItem }: { buttonText: string; handleAddTodoListItem: () => void }) => {
+type Props = {
+    buttonText: string
+    AddItem: () => void
+}
+
+export const AddButton: FC<Props> = ({ buttonText, AddItem }) => {
     return (
         <>
-            <button onClick={handleAddTodoListItem}>{buttonText}</button>
+            <button onClick={AddItem}>{buttonText}</button>
         </>
     );
 };
