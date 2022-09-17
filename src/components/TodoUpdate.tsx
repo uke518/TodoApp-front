@@ -1,7 +1,7 @@
 import { FC, } from 'react'
 import React from "react";
 import { Todo } from "../types/Todo"
-import { updateItem } from "../hooks/useTodo"
+import { useTodo } from "../hooks/useTodo";
 
 type Props = {
     todo: Todo
@@ -10,13 +10,14 @@ type Props = {
 }
 
 export const TodoUpdate: FC<Props> = ({ todo, buttonText, changeIsOpen }) => {
+    const { updateItem, todoList, AddItem, deleteItem } = useTodo();
     const [title, setTitle] = React.useState<string>(todo.title);
     const [content, setContent] = React.useState<string>(todo.content);
-    const handleUpdateItem = () => {
+    const UpdateAndCloseModal = () => {
         todo.title = title;
         todo.content = content;
-        console.log("更新後todo:", todo.title)
         updateItem(todo.id, todo)
+        changeIsOpen(false)
     }
     return (
         <>
@@ -37,7 +38,7 @@ export const TodoUpdate: FC<Props> = ({ todo, buttonText, changeIsOpen }) => {
                     />
                 </div>
                 <div className="PostForm">
-                    <button onClick={handleUpdateItem}>{buttonText}</button>
+                    <button type="button" onClick={() => UpdateAndCloseModal()}>{buttonText}</button>
                     <button type="button" onClick={() => changeIsOpen(false)}>破棄</button>
                 </div>
             </form>

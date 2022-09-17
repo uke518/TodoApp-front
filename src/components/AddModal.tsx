@@ -6,7 +6,7 @@ type Props = {
     buttonText: string
     changeIsOpen: (IsOpen: boolean) => void
 }
-export const TodoAdd: FC<Props> = ({ buttonText, changeIsOpen }) => {
+export const AddModal: FC<Props> = ({ buttonText, changeIsOpen }) => {
     const { todoList, AddItem, deleteItem } = useTodo();
     const [title, setTitle] = React.useState<string>("");
     const [content, setContent] = React.useState<string>("");
@@ -33,7 +33,7 @@ export const TodoAdd: FC<Props> = ({ buttonText, changeIsOpen }) => {
                     />
                 </div>
                 <div className="PostForm">
-                    <button onClick={handleAddItem}>{buttonText}</button>
+                    <button onClick={() => handleAddItem()}>{buttonText}</button>
                     <button type="button" onClick={() => changeIsOpen(false)}>破棄</button>
                 </div>
             </form>

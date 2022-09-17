@@ -9,7 +9,6 @@ export const useTodo = () => {
     //todo一覧を取得
     useEffect(() => {
         todoData.getAllTodoData().then((todo: Todo[]) => {
-            console.log("todo:", todo);
             setTodoList([...todo].reverse());
         });
     }, []);
@@ -33,12 +32,10 @@ export const useTodo = () => {
 
     //更新
     const updateItem = (id: string, todo: Todo) => {
-        todoData.updateTodoData(id, todo)
+        todoData.updateTodoData(id, todo).then((updatedTodo) => {
+            const newTodoList = todoList.map((item) => (item.id !== updatedTodo.id ? item : updatedTodo));
+            setTodoList(newTodoList);
+        })
     }
-    return { todoList, AddItem, deleteItem };
+    return { updateItem, todoList, AddItem, deleteItem };
 };
-
-//更新
-export const updateItem = (id: string, todo: Todo) => {
-    todoData.updateTodoData(id, todo)
-}

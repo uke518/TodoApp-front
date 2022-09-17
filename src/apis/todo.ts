@@ -8,8 +8,6 @@ const todoDataUrl = "http://127.0.0.1:8000/todos/";
 // 全Todoリスト取得
 export const getAllTodoData = async () => {
     const response = await axios.get(todoDataUrl)
-    console.log("status:", response.status)
-    console.log("axiosGetData:", response.data)
     return response.data;
 };
 
@@ -21,12 +19,12 @@ export const addTodoData = async (todo: Todo) => {
 
 // 1件のTODOを削除する
 export const deleteTodoData = async (id: string) => {
-    await axios.delete(`${todoDataUrl}${id}`);
+    await axios.delete(`${todoDataUrl}${id}/`);
     return id;
 };
 
 //1件のTODOを更新する
 export const updateTodoData = async (id: string, todo: Todo) => {
-    const response = await axios.put(`${todoDataUrl}${id}`, todo);
+    const response = await axios.put(`${todoDataUrl}${id}/`, todo);
     return response.data;
 };

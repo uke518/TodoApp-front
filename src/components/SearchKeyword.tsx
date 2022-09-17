@@ -1,18 +1,17 @@
-import React from "react";
 import { FC } from "react"
 
 
 type Props = {
-    filter:string
-    setFilter:(filter:string)=>void
+    keyword: string
+    setFilter: (keyword: string) => void
 }
 //Todoリストのフィルタリング
-export const TodoFilter:FC<Props> = ({filter,setFilter}) => {
+export const SearchKeyword: FC<Props> = ({ keyword, setFilter }) => {
     return (
         <>
             <input
                 type="text"
-                value={filter}
+                value={keyword}
                 onChange={(event) => setFilter(event.target.value)}
             />
         </>

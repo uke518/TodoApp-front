@@ -1,7 +1,6 @@
-import React from "react";
-import { useTodo } from "../hooks/useTodo";
-import { MainPage } from "./MainPage";
-import { DetailPage } from "./DetailPage";
+import { useTodo } from "./hooks/useTodo";
+import { MainPage } from "./pages/MainPage";
+import { DetailPage } from "./pages/DetailPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 
 
