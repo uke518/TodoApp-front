@@ -9,20 +9,20 @@ Modal.setAppElement("#root");
 
 export const MainPage = () => {
     const [modalIsOpen, setIsOpen] = React.useState(false);
-    const [keyword, setFilter] = React.useState<string>("");
-    const changeSetFilter = (keyword: string) => {
-        setFilter(keyword)
+    const [keyword, setKeyword] = React.useState<string>("");
+    const changeSetKeyword = (keyword: string) => {
+        setKeyword(keyword)
     }
     const changeIsOpen = (isOpen: boolean) => {
         setIsOpen(isOpen)
     }
-    const { todoList, AddItem, deleteItem } = useTodo();
+    const { todoList, deleteItem } = useTodo();
     return (
         <div className="TodoApp">
             <div>
                 <h1>Todoリスト</h1>
                 <>
-                    <SearchKeyword keyword={keyword} setFilter={changeSetFilter} />
+                    <SearchKeyword keyword={keyword} setKeyword={changeSetKeyword} />
                     <button onClick={() => setIsOpen(true)}>追加</button>
                     <Modal isOpen={modalIsOpen}>
                         <AddModal buttonText="作成" changeIsOpen={changeIsOpen} />

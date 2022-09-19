@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 
 
 function App() {
-  const { todoList, AddItem, deleteItem } = useTodo();
+  const { todoList } = useTodo();
   return (
     <Router>
       <Routes>
