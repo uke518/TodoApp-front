@@ -9,8 +9,8 @@ type Props = {
     changeIsOpen: (IsOpen: boolean) => void
 }
 
-export const TodoUpdate: FC<Props> = ({ todo, buttonText, changeIsOpen }) => {
-    const { updateItem, todoList, AddItem, deleteItem } = useTodo();
+export const UpdateModal: FC<Props> = ({ todo, buttonText, changeIsOpen }) => {
+    const { updateItem } = useTodo();
     const [title, setTitle] = React.useState<string>(todo.title);
     const [content, setContent] = React.useState<string>(todo.content);
     const UpdateAndCloseModal = () => {

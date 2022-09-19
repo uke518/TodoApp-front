@@ -1,7 +1,7 @@
 import { Todo } from "../types/Todo";
 import { useLocation } from "react-router-dom";
 import Modal from "react-modal";
-import { TodoUpdate } from "../components/TodoUpdate";
+import { UpdateModal } from "../components/UpdateModal";
 import React from "react";
 
 interface State {
@@ -25,7 +25,7 @@ export const DetailPage = () => {
                     {state.todo.title}
                     <button onClick={() => setIsUpdateOpen(true)}>編集</button>
                     <Modal isOpen={IsUpdateModalOpen}>
-                        <TodoUpdate todo={state.todo} buttonText="編集" changeIsOpen={changeIsOpen} />
+                        <UpdateModal todo={state.todo} buttonText="編集" changeIsOpen={changeIsOpen} />
                     </Modal>
                 </div>
                 <div className="content">

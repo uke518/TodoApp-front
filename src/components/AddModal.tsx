@@ -1,13 +1,15 @@
 import { FC } from 'react'
 import { useTodo } from "../hooks/useTodo";
 import React from "react";
+import { Todo } from "../types/Todo";
 
 type Props = {
+    todo?: Todo
     buttonText: string
     changeIsOpen: (IsOpen: boolean) => void
 }
 export const AddModal: FC<Props> = ({ buttonText, changeIsOpen }) => {
-    const { todoList, AddItem, deleteItem } = useTodo();
+    const { AddItem } = useTodo();
     const [title, setTitle] = React.useState<string>("");
     const [content, setContent] = React.useState<string>("");
     const handleAddItem = () => {
