@@ -3,6 +3,9 @@ import { useLocation } from "react-router-dom";
 import Modal from "react-modal";
 import { UpdateModal } from "../components/UpdateModal";
 import React from "react";
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import Button from '@mui/material/Button';
 
 interface State {
     todo: Todo
@@ -18,20 +21,27 @@ export const DetailPage = () => {
     const changeIsOpen = (updateModalIsOpen: boolean) => {
         setIsUpdateOpen(updateModalIsOpen)
     }
+
+    //改行を表示に反映
+    const text = state.todo.content.replace(/\n/g, '<br />');
     return (
         <>
-            <div>
-                <div className="title">
-                    {state.todo.title}
-                    <button onClick={() => setIsUpdateOpen(true)}>編集</button>
+            <Box>
+                <Grid container spacing={2} fontSize={30} m={2}>
+                    <Grid item>
+                        {state.todo.title}
+                    </Grid>
+                    <Grid item>
+                        <Button variant="outlined" onClick={() => setIsUpdateOpen(true)}>編集</Button>
+                    </Grid>
                     <Modal isOpen={IsUpdateModalOpen}>
                         <UpdateModal todo={state.todo} buttonText="編集" changeIsOpen={changeIsOpen} />
                     </Modal>
-                </div>
-                <div className="content">
-                    {state.todo.content}
-                </div>
-            </div>
+                </Grid>
+                <Box pl={4} pt={8} fontSize={20}>
+                    <div dangerouslySetInnerHTML={{ __html: text }} />
+                </Box>
+            </Box>
         </>
     )
 }
