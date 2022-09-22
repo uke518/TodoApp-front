@@ -4,8 +4,8 @@ import Modal from "react-modal";
 import { UpdateModal } from "../components/UpdateModal";
 import React from "react";
 import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 
 interface State {
     todo: Todo
@@ -27,19 +27,24 @@ export const DetailPage = () => {
     return (
         <>
             <Box>
-                <Grid container spacing={2} fontSize={30} m={2}>
-                    <Grid item>
-                        {state.todo.title}
-                    </Grid>
-                    <Grid item>
-                        <Button variant="outlined" onClick={() => setIsUpdateOpen(true)}>編集</Button>
-                    </Grid>
+                <Box sx={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    p: 1,
+                    m: 1,
+                    bgcolor: 'background.paper',
+                    borderRadius: 1,
+                    justifyContent: 'space-between',
+                    width: 530,
+                }}>
+                    <Typography variant="h4">{state.todo.title}</Typography>
+                    <Button variant="outlined" onClick={() => setIsUpdateOpen(true)}>編集</Button>
                     <Modal isOpen={IsUpdateModalOpen}>
                         <UpdateModal todo={state.todo} buttonText="編集" changeIsOpen={changeIsOpen} />
                     </Modal>
-                </Grid>
-                <Box pl={4} pt={8} fontSize={20}>
-                    <div dangerouslySetInnerHTML={{ __html: text }} />
+                </Box>
+                <Box pl={4} pt={8} fontSize={200}>
+                    <Typography variant="h6" dangerouslySetInnerHTML={{ __html: text }} />
                 </Box>
             </Box>
         </>
