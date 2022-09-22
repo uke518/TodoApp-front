@@ -2,6 +2,8 @@ import { Item } from "./Item";
 import { Todo } from "../types/Todo";
 import { FC } from "react";
 import Stack from '@mui/material/Stack';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
 
 type Props = {
     todoList: Todo[]
@@ -17,15 +19,15 @@ export const TodoList: FC<Props> = ({ todoList, deleteItem, keyword }) => {
             {todoList.length !== 0 && (
                 <>
                     <Stack spacing={2}>
-                        <ul>
+                        <List>
                             {todoList.map((todo) => (
                                 (todo.title.indexOf(keyword) > -1 || todo.content.indexOf(keyword) > -1) &&
-                                (<li key={todo.id}>
+                                (<ListItem key={todo.id}>
                                     <Item todo={todo} key={todo.id} deleteItem={deleteItem} />
-                                </li>)
+                                </ListItem>)
                             )
                             )}
-                        </ul>
+                        </List>
                     </Stack>
                 </>
             )}

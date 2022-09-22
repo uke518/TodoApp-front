@@ -4,6 +4,7 @@ import { FC } from "react"
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 
 type Props = {
     todo: Todo
@@ -34,7 +35,7 @@ export const Item: FC<Props> = ({ todo, deleteItem }) => {
                 <Grid container spacing={2} justifyContent='space-between'>
                     <Grid item fontSize={20}>
                         <Link to={`/${todo.id}`} state={{ todo: todo }}>
-                            <p>{todo.title}</p>
+                        <Typography variant="h5" m={2} color={"#0000ff"}>{todo.title}</Typography>
                         </Link>
                     </Grid>
                     <Grid item m={2}>
